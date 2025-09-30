@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 50dvh;
+  display: grid;
+  place-items: center;
+  color: black;
+  background: #f3f3f3; 
+}
+
+.container {
+  width: 70%;
+  max-width: 700px;
+  max-height: 550px;
+  background: rgb(53, 53, 53);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5vh 5vw;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 25px;  
+  margin-top: 10dvh;
+}
+
+.stopwatch {
+  max-width: 100%;
+  width: 500px;
+  height: 300px;
+  background-color: rgb(232, 231, 231);
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-template-columns: repeat(8, auto);
+  grid-template-rows: auto;
+  border-radius: 25px; 
+  gap: 10px;
+  padding: 16px 20px;
+}
+
+.displayy {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 10px;     
+  padding: 10px;               
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  text-shadow: 3px 4px gray;
+  user-select: none;
+}
+
+.hour, .minute, .seconds, .miliseconds {
+  background-color: black;
+  font-size: 3rem;
+  color: #F5F5F5;
+  padding: 6px 10px;
+  border-radius: 20px;
+  min-width: 2ch;
+  line-height: 1;
+}
+
+.buttons {
+  display: grid;
+  gap: 10px;
+  justify-items: center; 
+  width: 100%;
+  max-width: 600px;
+  grid-template-columns: repeat(2, 1fr); 
+  justify-content: center; 
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: rosybrown;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  text-transform: uppercase;
+  width: 100%;
+  max-width: 160px;
+  outline: .5px black solid;
+  cursor: pointer;
+}
+
+#start:hover {
+  box-shadow: 0px 0px 2px 2px whitesmoke;
+  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
+  color: #291d1d;
+}
+
+#stop:hover {
+  box-shadow: 0px 0px 2px 2px whitesmoke;
+  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
+  color: #291d1d;
+}
+
+#reset:hover {
+  box-shadow: 0px 0px 2px 2px whitesmoke;
+  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
+  color: #291d1d;
+}
+
+#laps:hover {
+  box-shadow: 0px 0px 2px 2px whitesmoke;
+  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
+  color: #291d1d;
+}
+
+@media (max-width: 480px) {
+  .stopwatch {
+    width: 95vw;              
+    padding: 12px 14px;
+    gap: 6px;
+  }
+  .hour, .minute, .miliseconds, .seconds, .colon1, .colon2, .colon3 {
+    font-size: 5vw;          
+  }
+  
+  .buttons {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .stopwatch {
+    width: 520px;
+    padding: 14px 18px;
+    gap: 8px;
+  }
+  .hour, .minute, .seconds, .miliseconds, .colon1, .colon2, .colon3 {
+    font-size: 5vw;
+  }
+  .buttons {
+    grid-template-columns: 1fr 1fr; 
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .stopwatch {
+    width: 600px;
+    padding: 16px 20px;
+    gap: 10px;
+  }
+  .hour, .minute, .seconds, .miliseconds, .colon1, .colon2, .colon3 {
+    font-size: 4vw;
+  }
+  .buttons {
+    grid-template-columns: repeat(4, 1fr); 
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .stopwatch {
+    width: 720px;
+    padding: 18px 24px;
+    gap: 12px;
+  }
+  .hour, .minute, .seconds, .miliseconds, .colon1, .colon2, .colon3 {
+    font-size: 3.5rem;
+  }
+  .buttons {
+    grid-template-columns: repeat(4, 1fr); 
+    max-width: 720px;
+  }
+}
