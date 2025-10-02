@@ -1,185 +1,262 @@
+
 * {
   margin: 0;
   padding: 0;
-  outline: 0;
   box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-tap-highlight-color: transparent; /* remove mobile tap flash */
 }
 
+button { touch-action: manipulation; }
+
+/*  Body & Theme  */
 body {
-  height: 50dvh;
-  display: grid;
-  place-items: center;
-  color: black;
-  background: #f3f3f3; 
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.dark {
+  background: #121212;
+  color: #ddd;
+}
+
+/*  Theme Switch Button*/
+#theme-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#theme-switch button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#theme-switch button:hover {
+  transform: scale(1.2);
+}
+
+body.dark #theme-switch button::before {
+  content: '🌙';
+}
+
+/*  Card Container  */
 .container {
-  width: 70%;
-  max-width: 700px;
-  max-height: 550px;
-  background: rgb(53, 53, 53);
+  width: 90%;
+  max-width: 480px;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 5vh 5vw;
-  text-align: center;
-  box-sizing: border-box;
-  border-radius: 25px;  
-  margin-top: 10dvh;
+  transition: background-color 0.3s ease;
 }
 
-.stopwatch {
-  max-width: 100%;
-  width: 500px;
-  height: 300px;
-  background-color: rgb(232, 231, 231);
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  grid-template-columns: repeat(8, auto);
-  grid-template-rows: auto;
-  border-radius: 25px; 
-  gap: 10px;
-  padding: 16px 20px;
+body.dark .container {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.displayy {
-  grid-column: 1 / -1;
-  margin-top: 10px;
-  background-color: white;
-  border-radius: 10px;     
-  padding: 10px;               
-}
-
+/* Heading  */
 h1 {
-  color: white;
   font-size: 2rem;
-  line-height: 1.2;
-  margin: 0 0 20px 0;
-  text-shadow: 3px 4px gray;
+  margin-bottom: 20px;
+  color: #333;
+  letter-spacing: 2px;
   user-select: none;
+  transition: color 0.3s ease;
 }
 
-.hour, .minute, .seconds, .miliseconds {
-  background-color: black;
-  font-size: 3rem;
-  color: #F5F5F5;
-  padding: 6px 10px;
-  border-radius: 20px;
-  min-width: 2ch;
-  line-height: 1;
-}
+body.dark h1 { color: #ddd; }
 
-.buttons {
-  display: grid;
-  gap: 10px;
-  justify-items: center; 
+/*  Stopwatch container */
+.stopwatch {
   width: 100%;
-  max-width: 600px;
-  grid-template-columns: repeat(2, 1fr); 
-  justify-content: center; 
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+body.dark .stopwatch { background: #252525; }
+
+/*  Time Display  Area */
+
+.time-display {
+  font-size: 2.5rem; /* default larger screens */
+  color: #222;
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.3s ease, background-color 0.3s ease, font-size 0.3s ease;
+}
+
+.time-display span {
+  min-width: 2ch; /* consistent width for digits */
+  text-align: center;
+}
+
+body.dark .time-display {
+  color: #eee;
+  background: #333;
+}
+
+/* Laps List Area*/
+.laps {
+  max-height: 120px;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#laps-list { list-style: none; text-align: left; }
+
+#laps-list li {
+  font-size: 1rem;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+#laps-list li:last-child { border-bottom: none; }
+
+body.dark .laps { background: #2a2a2a; }
+body.dark #laps-list li {
+  color: #bbb;
+  border-bottom: 1px solid #333;
+}
+
+/* buttons div*/
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;        /* consistent spacing */
+  flex-wrap: wrap;  /* allow wrap on narrow screens */
 }
 
 button {
-  padding: 10px 20px;
-  margin: 10px;
+  flex: 1 1 0;
+  margin: 0;
+  padding: 14px 16px;   /* larger tap area */
+  min-height: 48px;     /* >=44px for WCAG touch target */
+  min-width: 44px;
   border: none;
-  border-radius: 50px;
-  background-color: rosybrown;
-  color: whitesmoke;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 30px;
-  text-transform: uppercase;
-  width: 100%;
-  max-width: 160px;
-  outline: .5px black solid;
+  border-radius: 12px;  /* thumb-friendly corners */
+  background: #e0e0e0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .01em;
   cursor: pointer;
+  transition: transform .06s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
 }
 
-#start:hover {
-  box-shadow: 0px 0px 2px 2px whitesmoke;
-  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
-  color: #291d1d;
+button:hover { background: #d6d6d6; }
+
+button:active {
+  transform: translateY(1px) scale(.985); */
 }
 
-#stop:hover {
-  box-shadow: 0px 0px 2px 2px whitesmoke;
-  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
-  color: #291d1d;
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,122,255,.32); 
 }
 
-#reset:hover {
-  box-shadow: 0px 0px 2px 2px whitesmoke;
-  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
-  color: #291d1d;
+/* Dark mode buttons */
+
+
+body.dark button {
+  background: #333;
+  color: #eee;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
-#laps:hover {
-  box-shadow: 0px 0px 2px 2px whitesmoke;
-  text-shadow: 1px 2px rgba(47, 54, 64, 0.3);
-  color: #291d1d;
-}
+body.dark button:hover { background: #3c3c3c; }
+
+/*  Mobile Responsiveness */
 
 @media (max-width: 480px) {
-  .stopwatch {
-    width: 95vw;              
-    padding: 12px 14px;
-    gap: 6px;
+  .container {
+    padding: 20px 15px;
+    width: 95%;
   }
-  .hour, .minute, .miliseconds, .seconds, .colon1, .colon2, .colon3 {
-    font-size: 5vw;          
+
+  h1 { font-size: 1.5rem; }
+
+  .stopwatch { padding: 15px; }
+
+  .time-display {
+    font-size: 1.8rem; 
+    padding: 8px;
+    flex-wrap: wrap;   
   }
+
+  .time-display span { min-width: 1.5ch; }
+
+  .laps { max-height: 100px; }
+
+  #laps-list li { font-size: 0.9rem; }
+
   
   .buttons {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 767px) {
-  .stopwatch {
-    width: 520px;
-    padding: 14px 18px;
-    gap: 8px;
-  }
-  .hour, .minute, .seconds, .miliseconds, .colon1, .colon2, .colon3 {
-    font-size: 5vw;
-  }
-  .buttons {
-    grid-template-columns: 1fr 1fr; 
-    max-width: 520px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .stopwatch {
-    width: 600px;
-    padding: 16px 20px;
-    gap: 10px;
-  }
-  .hour, .minute, .seconds, .miliseconds, .colon1, .colon2, .colon3 {
-    font-size: 4vw;
-  }
-  .buttons {
-    grid-template-columns: repeat(4, 1fr); 
-    max-width: 600px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .stopwatch {
-    width: 720px;
-    padding: 18px 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
     gap: 12px;
   }
-  .hour, .minute, .seconds, .miliseconds, .colon1, .colon2, .colon3 {
-    font-size: 3.5rem;
+
+  button {
+    padding: 16px;
+    font-size: 1rem;
+    min-height: 52px;    
+    border-radius: 14px;
   }
-  .buttons {
-    grid-template-columns: repeat(4, 1fr); 
-    max-width: 720px;
-  }
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .container { max-width: 520px; padding: 30px 20px; }
+  .time-display { font-size: 2.2rem; }
+  h1 { font-size: 1.8rem; }
+
+  .buttons { gap: 12px; }
+  button   { min-height: 50px; padding: 14px 16px; }
+}
+
+
+
+@media (min-width: 768px) {
+  .container { max-width: 600px; }
+  .time-display { font-size: 2.8rem; }
+  h1 { font-size: 2rem; }
+
+  .buttons { gap: 12px; }
+  button   { min-height: 48px; }
+}
+
+/*  Reduced Motion choice =*/
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }

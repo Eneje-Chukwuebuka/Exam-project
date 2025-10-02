@@ -5,29 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STOPWATCH</title>
     <link rel="stylesheet" href="style.css">
-    <script src="stopwatch.js" defer></script> <!-- Ensure script is loaded correctly -->
+    <script src="stopwatch.js" defer></script>
 </head>
 <body>
-    <div class="container"> 
+    <div id="theme-switch"><button>☀️</button></div>
+    <div class="container">
         <h1>STOPWATCH</h1>
-       <div class="stopwatch">
-    
-        <div class="hour" id="hours">00</div>
-        <div class="colon1">:</div>
-        <div class="minute" id="minutes">00</div>
-        <div class="colon2">:</div>
-        <div class="seconds" id="seconds">00</div>
-        <div class="colon3">:</div>
-        <div class="miliseconds" id="miliseconds">00</div>
-        <div class="displayy">Empty</div>
-
-       </div>
-       <div class="buttons">
-        <button id="start">Start</button>
-        <button id="stop">Stop</button>
-        <button id="reset">Reset</button>
-        <button id="laps">Laps</button>
-       </div>
+        <div class="stopwatch">
+            <div class="time-display">
+                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>:<span id="miliseconds">00</span>
+            </div>
+            <div class="laps">
+                <ul id="laps-list"></ul>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+            <button id="laps">Lap</button>
+        </div>
     </div>
 </body>
 </html>
