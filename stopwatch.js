@@ -1,16 +1,15 @@
-
 (function () {
   // DOM elements
-  const hourDisplay = document.getElementById('hours');
-  const minuteDisplay = document.getElementById('minutes');
-  const secondDisplay = document.getElementById('seconds');
-  const millisecondDisplay = document.getElementById('miliseconds');
-  const lapsList = document.getElementById('laps-list');
-  const startButton = document.getElementById('start');
-  const stopButton = document.getElementById('stop');
-  const resetButton = document.getElementById('reset');
-  const lapButton = document.getElementById('laps');
-  const themeSwitch = document.getElementById('theme-switch');
+  const hourDisplay = document.getElementById("hours");
+  const minuteDisplay = document.getElementById("minutes");
+  const secondDisplay = document.getElementById("seconds");
+  const millisecondDisplay = document.getElementById("milliseconds");
+  const lapsList = document.getElementById("laps-list");
+  const startButton = document.getElementById("start");
+  const stopButton = document.getElementById("stop");
+  const resetButton = document.getElementById("reset");
+  const lapButton = document.getElementById("laps");
+  const themeSwitch = document.getElementById("theme-switch");
 
   // State of values
   let hours = 0;
@@ -25,7 +24,7 @@
     return time < 10 ? `0${time}` : time;
   }
 
-  // Format trimmed milliseconds 
+  // Format trimmed milliseconds
   function formatMilliseconds(ms) {
     let hundredths = Math.floor(ms / 10); // convert 0–999 ms → 0–99
     return hundredths < 10 ? `0${hundredths}` : `${hundredths}`;
@@ -71,7 +70,6 @@
 
   // Reset timer
 
-
   function resetTimer() {
     stopTimer();
     hours = 0;
@@ -80,33 +78,34 @@
     milliseconds = 0;
     lapTimes = [];
     updateDisplay();
-    lapsList.innerHTML = '';
+    lapsList.innerHTML = "";
   }
 
   // Record lap
   function recordLap() {
-    const lapTime = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}.${formatMilliseconds(milliseconds)}`;
+    const lapTime = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(
+      seconds
+    )}.${formatMilliseconds(milliseconds)}`;
     lapTimes.push(lapTime);
-    const lapElement = document.createElement('li');
+    const lapElement = document.createElement("li");
     lapElement.textContent = `Lap ${lapTimes.length}: ${lapTime}`;
     lapsList.appendChild(lapElement);
   }
 
   // Event listeners
-  startButton.addEventListener('click', startTimer);
-  stopButton.addEventListener('click', stopTimer);
-  resetButton.addEventListener('click', resetTimer);
-  lapButton.addEventListener('click', recordLap);
+  startButton.addEventListener("click", startTimer);
+  stopButton.addEventListener("click", stopTimer);
+  resetButton.addEventListener("click", resetTimer);
+  lapButton.addEventListener("click", recordLap);
 
   // Theme switch
-  document.body.classList.add('light');
-  themeSwitch.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    document.body.classList.toggle('dark');
+  document.body.classList.add("light");
+  themeSwitch.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+    document.body.classList.toggle("dark");
   });
 
   // Initialize display
 
-  
   updateDisplay();
 })();

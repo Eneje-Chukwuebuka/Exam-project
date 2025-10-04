@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>STOPWATCH</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="stopwatch.js" defer></script>
-</head>
-<body>
+    
+  <body>
+    <!-- Theme toggle button (light/dark mode switch) -->
     <div id="theme-switch"><button>☀️</button></div>
+
     <div class="container">
-        <h1>STOPWATCH</h1>
-        <div class="stopwatch">
-            <div class="time-display">
-                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>:<span id="miliseconds">00</span>
-            </div>
-            <div class="laps">
-                <ul id="laps-list"></ul>
-            </div>
+      <!-- Page Title -->
+      <h1>STOPWATCH</h1>
+
+      <!-- Stopwatch display section -->
+      <div class="stopwatch">
+        <div class="time-display">
+          <!-- Hours, Minutes, Seconds, and Milliseconds -->
+          <span id="hours">00</span>:
+          <span id="minutes">00</span>:
+          <span id="seconds">00</span>:
+          <span id="milliseconds">00</span>
         </div>
-        <div class="buttons">
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
-            <button id="reset">Reset</button>
-            <button id="laps">Lap</button>
+
+        <!-- Section for displaying saved lap times -->
+        <div class="laps">
+          <ul id="laps-list"></ul>
         </div>
+      </div>
+
+      <!-- Control buttons for stopwatch -->
+      <div class="buttons">
+        <button id="start">Start</button> 
+        <button id="stop">Stop</button>   
+        <button id="reset">Reset</button> 
+        <button id="laps">Lap</button>    
     </div>
-</body>
+  </body>
 </html>

@@ -4,7 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Courier New', Courier, monospace;
-  -webkit-tap-highlight-color: transparent; /* remove mobile tap flash */
+  -webkit-tap-highlight-color: transparent; 
 }
 
 button { touch-action: manipulation; }
@@ -96,7 +96,7 @@ body.dark .stopwatch { background: #252525; }
 /*  Time Display  Area */
 
 .time-display {
-  font-size: 2.5rem; /* default larger screens */
+  font-size: 2.5rem; 
   color: #222;
   background: #e0e0e0;
   padding: 10px;
@@ -109,7 +109,7 @@ body.dark .stopwatch { background: #252525; }
 }
 
 .time-display span {
-  min-width: 2ch; /* consistent width for digits */
+  min-width: 2ch; 
   text-align: center;
 }
 
@@ -151,18 +151,18 @@ body.dark #laps-list li {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 12px;        /* consistent spacing */
-  flex-wrap: wrap;  /* allow wrap on narrow screens */
+  gap: 12px;        
+  flex-wrap: wrap;  
 }
 
 button {
   flex: 1 1 0;
   margin: 0;
-  padding: 14px 16px;   /* larger tap area */
-  min-height: 48px;     /* >=44px for WCAG touch target */
+  padding: 14px 16px;   
+  min-height: 48px;     
   min-width: 44px;
   border: none;
-  border-radius: 12px;  /* thumb-friendly corners */
+  border-radius: 12px;  
   background: #e0e0e0;
   color: #333;
   font-size: 1rem;
@@ -260,3 +260,4 @@ body.dark button:hover { background: #3c3c3c; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
